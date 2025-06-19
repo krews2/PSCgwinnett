@@ -93,7 +93,7 @@ info.update = function (props) {
 				console.error(err);
 			});
 	} else {
-		this._div.innerHTML = "<h4>US Population Density</h4>Hover over a precinct";
+		this._div.innerHTML = "<h4>Precinct</h4>Hover over a precinct";
 	}
 };
 
