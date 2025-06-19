@@ -1,0 +1,20 @@
+.chart-container {
+  display: flex;
+  
+  flex-direction: row; /* Makes children sit side by side */
+  gap: 40px;            /* Optional: Adds space between map and chart */
+}
+
+#maps {
+  width: 100%;
+  padding-right: 20px;
+  max-width: 1000px;     /* Adjust size as needed */
+  height: 400px;        /* Set a consistent height */
+}
+
+
+#chartsize {
+  width: 100%;
+  max-width: 1200px;     /* Adjust size as needed */
+  height: 700px;        /* Set a consistent height */
+}
