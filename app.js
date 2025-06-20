@@ -179,8 +179,35 @@ let ds = {
 };
 
 // Configuration options for the chart
-const options = {
+const config = {
+type: 'bar',
+data: ds,
+options: {
 	plugins: {
+		datalabels: {
+
+			
+			anchor: 'end',
+			align: 'start',
+			color:'white',
+			font:{
+				size:14,
+				weight: 900
+			},
+			formatter: (value,context) => {
+                
+				netIndex = Number(context.dataIndex)
+
+                let percentage = (value*100 ).toFixed(2)+"%";
+				let voteTotal = context.dataset.datatot[netIndex]
+                return [`Vote Count: ${voteTotal}`,
+				`% of Vote: ${percentage}`];
+            },
+
+
+
+
+		},
 		        
 		legend: {
 			display: false // This hides the entire legend
@@ -194,7 +221,7 @@ const options = {
 					
 				
 					let percentage = (context.raw * 100).toFixed(2);
-					return [`${context.label}: ${percentage}%`,
+					return [`% of Vote: ${percentage}%`, 
 					"Vote Count: " + context.dataset.datatot[netIndex],
 					]
 				}
@@ -210,7 +237,10 @@ const options = {
 				}
 			}
 		}
-	}
+	},
+	
+},
+plugins: [ChartDataLabels]
 };
 
 
@@ -223,11 +253,9 @@ const options = {
 	}
 
 	// Create the new chart
-	myBarChart = new Chart(ctx1, {
-		type: 'bar',
-		data: ds,
-		options: options
-	});
+	myBarChart = new Chart(ctx1, 
+		config
+	);
 
 
 }
